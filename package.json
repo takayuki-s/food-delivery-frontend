@@ -10,7 +10,8 @@
   "dependencies": {
     "next": "9.4.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "reactstrap": "^9.1.9"
   },
   "devDependencies": {
     "prettier": "2.8.7"
