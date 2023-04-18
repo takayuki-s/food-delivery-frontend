@@ -1,4 +1,5 @@
 import { Col, Input, InputGroup, InputGroupText, Row } from 'reactstrap'
+import RestaurantList from '../components/RestaurantsList'
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
               <Input placeholder="レストラン名を入力してください" />
             </InputGroup>
           </div>
+          <RestaurantList />
         </Col>
       </Row>
       <style jsx>{`
