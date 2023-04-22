@@ -18,7 +18,7 @@ const query = gql`
 
 const RestaurantList = () => {
   const { loading, error, data } = useQuery(query)
-
+  if (loading) return <h2>ロード中・・・</h2>
   if (data.restaurants && data.restaurants.length) {
     return (
       <Row>
