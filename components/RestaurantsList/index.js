@@ -18,24 +18,34 @@ const query = gql`
 
 const RestaurantList = () => {
   const { loading, error, data } = useQuery(query)
+  console.log(data)
   if (loading) return <h2>ロード中・・・</h2>
-  if (data.restaurants && data.restaurants.length) {
+  if (data) {
     return (
       <Row>
-        <Col xs="6" sm="4">
-          <Card style={{ margin: '0 0.5rem 20px 0.5rem' }}>
-            <CardImg src="" top={true} style={{ height: 250 }} />
-            <CardBody>
-              <CardTitle>Italian restaurant</CardTitle>
-              <CardTitle>イタリアンのレストランです</CardTitle>
-            </CardBody>
-            <div className="card-footer">
-              <Link href="/restaurants?id=test" as="test">
-                <a className="btn btn-primary">もっとみる</a>
-              </Link>
-            </div>
-          </Card>
-        </Col>
+        {data.restaurants.map((res) => (
+          <Col xs="6" sm="4" key={res.id}>
+            <Card style={{ margin: '0 0.5rem 20px 0.5rem' }}>
+              <CardImg
+                src={`${process.env.NEXT_PUBLIC_API_URL}${res.image[0].url}`}
+                top={true}
+                style={{ height: 250 }}
+              />
+              <CardBody>
+                <CardTitle>{res.name}</CardTitle>
+                <CardTitle>{res.description}</CardTitle>
+              </CardBody>
+              <div className="card-footer">
+                <Link
+                  href={`/restaurants/${res.id}`}
+                  as={`/restaurants?id=${res.id}`}
+                >
+                  <a className="btn btn-primary">もっとみる</a>
+                </Link>
+              </div>
+            </Card>
+          </Col>
+        ))}
         <style jsx>
           {`
             a {
