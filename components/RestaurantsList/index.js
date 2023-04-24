@@ -16,7 +16,7 @@ const query = gql`
   }
 `
 
-const RestaurantList = () => {
+const RestaurantList = (props) => {
   const { loading, error, data } = useQuery(query)
   console.log(data)
   if (loading) return <h2>ロード中・・・</h2>
