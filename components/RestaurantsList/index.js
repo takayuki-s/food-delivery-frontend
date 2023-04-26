@@ -18,6 +18,7 @@ const query = gql`
 
 const RestaurantList = (props) => {
   const { loading, error, data } = useQuery(query)
+  if (error) return <h2>レストランの読み込みに失敗しました</h2>
   if (loading) return <h2>ロード中・・・</h2>
   if (data) {
     const searchQuery = data.restaurants.filter((restaurant) =>
