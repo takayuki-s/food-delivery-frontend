@@ -9,12 +9,20 @@ import {
   Row,
 } from 'reactstrap'
 import { registerUser } from '../lib/auth'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import AppContext from '../context/AppContext'
 
 const register = () => {
+  const appContext = useContext(AppContext)
   const [data, setData] = useState({ username: '', email: '', password: '' })
   const handleRegister = () => {
-    registerUser()
+    registerUser(data.username, data.email, data.password)
+      .then((res) => {
+        appContext.setUser(res.data.user)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   console.log(data)
