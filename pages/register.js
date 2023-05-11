@@ -25,8 +25,6 @@ const register = () => {
       })
   }
 
-  console.log(data)
-
   return (
     <Container>
       <Row>
