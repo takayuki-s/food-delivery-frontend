@@ -6,7 +6,7 @@ import { Container, Nav, NavItem } from 'reactstrap'
 import AppContext from '../context/AppContext'
 
 const Layout = (props) => {
-  const { user, setUser } = useContext(AppContext)
+  const { user } = useContext(AppContext)
   return (
     <div>
       <Head>
@@ -32,10 +32,8 @@ const Layout = (props) => {
           </NavItem>
           <NavItem className="ml-auto">
             {user ? (
-              <Link>
-                <a className="nav-link" onClick={setUser(null)}>
-                  ログアウト
-                </a>
+              <Link href="/">
+                <a className="nav-link">ログアウト</a>
               </Link>
             ) : (
               <Link href="/login">
