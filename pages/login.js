@@ -8,10 +8,11 @@ import {
   Label,
   Row,
 } from 'reactstrap'
+import { login } from '../lib/auth'
 import { useContext, useState } from 'react'
 import AppContext from '../context/AppContext'
 
-const login = () => {
+const Login = () => {
   const appContext = useContext(AppContext)
   const [data, setData] = useState({ identifier: '', password: '' })
   console.log(data)
@@ -99,4 +100,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login
