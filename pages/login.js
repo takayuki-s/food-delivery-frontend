@@ -14,7 +14,22 @@ import AppContext from '../context/AppContext'
 const login = () => {
   const appContext = useContext(AppContext)
   const [data, setData] = useState({ identifier: '', password: '' })
-  const handleLogin = () => {}
+  console.log(data)
+
+  const handleLogin = () => {
+    login(data.identifier, data.password)
+      .then((res) => {
+        console.log('then')
+        appContext.setUser(res.data.user)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  const handelChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value })
+  }
 
   return (
     <Container>
@@ -34,6 +49,7 @@ const login = () => {
                     type="email"
                     name="identifier"
                     style={{ height: 50, fontSize: '1.2rem' }}
+                    onChange={(e) => handelChange(e)}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -42,6 +58,7 @@ const login = () => {
                     type="password"
                     name="password"
                     style={{ height: 50, fontSize: '1.2rem' }}
+                    onChange={(e) => handelChange(e)}
                   />
                 </FormGroup>
                 <span>
