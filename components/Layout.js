@@ -22,6 +22,9 @@ const Layout = (props) => {
             a {
               color: white;
             }
+            h5 {
+              color: gray;
+            }
           `}
         </style>
         <Nav className="navbar navbar-dark bg-dark">
