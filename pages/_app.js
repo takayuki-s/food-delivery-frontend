@@ -9,6 +9,7 @@ import Cookies from 'js-cookie'
 class MyApp extends App {
   state = {
     user: null,
+    cart: { items: [], total: 0 },
   }
 
   // すでにユーザーのクッキー情報が残っているかを確認する
@@ -34,6 +35,25 @@ class MyApp extends App {
 
   setUser = (user) => {
     this.setState({ user })
+  }
+
+  // カートへ商品を追加
+  addItem = (item) => {
+    let { items } = this.state.cart
+    const newItem = items.find((i) => i.id === item.id)
+    if (!newItem) {
+      item.quantity = 1
+      // カードに追加する
+      this.setState(
+        {
+          cart: {
+            items: [...items, item],
+            total: this.state.cart.total + item.price,
+          },
+        },
+        () => Cookies.set('cart', this.state.cart.items)
+      )
+    }
   }
 
   render() {
