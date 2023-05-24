@@ -43,11 +43,26 @@ class MyApp extends App {
     const newItem = items.find((i) => i.id === item.id)
     if (!newItem) {
       item.quantity = 1
-      // カードに追加する
+      // カートに追加する
       this.setState(
         {
           cart: {
             items: [...items, item],
+            total: this.state.cart.total + item.price,
+          },
+        },
+        () => Cookies.set('cart', this.state.cart.items)
+      )
+    } else {
+      // 同じ商品がカートに入っているとき
+      this.setState(
+        {
+          cart: {
+            items: this.state.cart.items.map((item) =>
+              item.id === newItem.id
+                ? Object.assign({}, item, { quantity: item.quantity + 1 })
+                : item
+            ),
             total: this.state.cart.total + item.price,
           },
         },
