@@ -78,6 +78,7 @@ class MyApp extends App {
       <AppContext.Provider
         value={{
           user: this.state.user,
+          cart: this.state.cart,
           setUser: this.setUser,
           addItem: this.addItem,
         }}
