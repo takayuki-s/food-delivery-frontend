@@ -7,6 +7,7 @@ const Cart = () => {
   const appContext = useContext(AppContext)
 
   const { cart } = appContext
+  console.log(cart)
   return (
     <div>
       <Card style={{ padding: '10px 5px' }}>
@@ -45,6 +46,7 @@ const Cart = () => {
                               marginLeft: 10,
                             }}
                             color="link"
+                            onClick={() => appContext.addItem(item)}
                           >
                             +
                           </Button>
