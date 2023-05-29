@@ -15,6 +15,19 @@ class MyApp extends App {
   // すでにユーザーのクッキー情報が残っているかを確認する
   componentDidMount() {
     const token = Cookies.get('token')
+    const cart = Cookies.get('cart')
+
+    if (cart != undefined) {
+      JSON.parse(cart).forEach((item) => {
+        this.setState({
+          cart: {
+            items: JSON.parse(cart),
+            total: (this.state.cart.total += item.price * item.quantity),
+          },
+        })
+      })
+    }
+
     if (token) {
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
         headers: {
