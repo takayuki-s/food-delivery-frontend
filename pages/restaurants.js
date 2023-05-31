@@ -39,7 +39,6 @@ const Restaurants = (props) => {
   const { loading, error, data } = useQuery(GET_RESTAURANT_DISHES, {
     variables: { id: router.query.id },
   })
-  console.log(data)
   if (error) return <h2>レストランの読み込みに失敗しました</h2>
   if (loading) return <h2>ロード中・・・</h2>
   if (data) {

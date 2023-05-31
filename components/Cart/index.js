@@ -7,7 +7,6 @@ const Cart = () => {
   const appContext = useContext(AppContext)
 
   const { cart } = appContext
-  console.log(cart)
   return (
     <div>
       <Card style={{ padding: '10px 5px' }}>

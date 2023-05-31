@@ -40,7 +40,6 @@ class MyApp extends App {
           return null
         }
         const user = await res.json()
-        console.log(user)
         this.setUser(user)
       })
     }
@@ -54,7 +53,6 @@ class MyApp extends App {
   addItem = (item) => {
     let { items } = this.state.cart
     const newItem = items.find((i) => i.id === item.id)
-    console.log(newItem)
     if (!newItem) {
       item.quantity = 1
       // カートに追加する

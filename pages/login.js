@@ -15,12 +15,10 @@ import AppContext from '../context/AppContext'
 const Login = () => {
   const appContext = useContext(AppContext)
   const [data, setData] = useState({ identifier: '', password: '' })
-  console.log(data)
 
   const handleLogin = () => {
     login(data.identifier, data.password)
       .then((res) => {
-        console.log('then')
         appContext.setUser(res.data.user)
       })
       .catch((err) => {
